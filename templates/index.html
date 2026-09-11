@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CHAPATI ANALYZER™ — Bread Performance Review Lab</title>
+  
+  <!-- PWA Meta -->
+  <meta name="theme-color" content="#D97706">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ChapatiLab">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="/static/icons/favicon.png">
+  <link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand-wrapper" id="brandBtn">
+        <img src="/static/icons/icon-192.png" alt="Chapati Analyzer Logo" class="brand-icon">
+        <div class="brand-text">
+          <span class="brand-title">CHAPATI ANALYZER™</span>
+          <span class="brand-badge">BREAD METRIC LAB • CV ENGINE</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-btn active" data-screen="screenHome">HOME</button>
+        <button class="nav-btn" data-screen="screenAnalyze">ANALYZE</button>
+        <button class="nav-btn" data-screen="screenHistory">HISTORY</button>
+        <button class="nav-btn" data-screen="screenAbout">ABOUT</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PWA Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <div class="install-container">
+      <span>Install <strong>Chapati Analyzer™</strong> on your home screen for one-tap mobile inspection!</span>
+      <button class="install-btn" id="installBtn">INSTALL APP</button>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- ================= SCREEN 1: HOME ================= -->
+    <section class="screen-view active-screen" id="screenHome">
+      <div class="hero-section">
+        <div class="hero-tag">
+          <span>MATHEMATICAL GEOMETRY & OPTICAL INSPECTION</span>
+        </div>
+        <h1 class="hero-title">CHAPATI <span>ANALYZER™</span></h1>
+        <p class="hero-tagline">"Because apparently, even a chapati needs a performance review."</p>
+        <p class="hero-description">
+          Upload or photograph a chapati and let classical computer vision judge its circularity, symmetry, radial stability, and toasting geometry with zero AI hallucinations.
+        </p>
+        <button class="hero-cta-btn" id="heroCtaBtn">
+          <span>🔍</span> ANALYZE A CHAPATI
+        </button>
+      </div>
+
+      <div class="pipeline-section">
+        <span class="section-label">Automated CV Evaluation Pipeline</span>
+        <div class="pipeline-steps">
+          <div class="pipeline-step-card">
+            <div class="step-number">PHASE 01</div>
+            <div class="step-icon">📷</div>
+            <div class="step-title">CAPTURE</div>
+            <div class="step-desc">High-resolution camera or file upload with guidance reticle</div>
+          </div>
+          <div class="pipeline-step-card">
+            <div class="step-number">PHASE 02</div>
+            <div class="step-icon">🔍</div>
+            <div class="step-title">DETECT</div>
+            <div class="step-desc">Classical Otsu & color-space dough boundary segmentation</div>
+          </div>
+          <div class="pipeline-step-card">
+            <div class="step-number">PHASE 03</div>
+            <div class="step-icon">📐</div>
+            <div class="step-title">MEASURE</div>
+            <div class="step-desc">360° radial sampling, perimeter, Taubin circle fit, & symmetry</div>
+          </div>
+          <div class="pipeline-step-card">
+            <div class="step-number">PHASE 04</div>
+            <div class="step-icon">🔥</div>
+            <div class="step-title">ANALYZE</div>
+            <div class="step-desc">5-zone Maillard browning heatmap & surface micro-texture</div>
+          </div>
+          <div class="pipeline-step-card">
+            <div class="step-number">PHASE 05</div>
+            <div class="step-icon">📊</div>
+            <div class="step-title">SCORE</div>
+            <div class="step-desc">Chapati Perfection Index™ & certified humorous verdict</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2: ANALYZE ================= -->
+    <section class="screen-view" id="screenAnalyze">
+      
+      <!-- Input Guidance -->
+      <div class="guidance-box">
+        <div class="guidance-title">
+          <span>📐</span> OPTICAL CAPTURE GUIDELINES:
+        </div>
+        <ul class="guidance-list">
+          <li>Place one chapati on a contrasting surface</li>
+          <li>Ensure the complete chapati perimeter is visible</li>
+          <li>Keep camera perpendicular to chapati (top-down)</li>
+          <li>Avoid harsh directional cast shadows or cutlery</li>
+        </ul>
+      </div>
+
+      <!-- Input Mode Switcher -->
+      <div class="input-mode-tabs" id="inputModeTabs">
+        <button class="tab-btn active-tab" id="tabCameraMode">
+          <span>📷</span> Live Camera
+        </button>
+        <button class="tab-btn" id="tabUploadMode">
+          <span>📁</span> Upload Image
+        </button>
+      </div>
+
+      <!-- Camera Mode View -->
+      <div id="cameraViewContainer">
+        <div class="camera-container">
+          <video class="camera-video" id="cameraVideo" autoplay playsinline muted></video>
+          <canvas class="camera-canvas" id="cameraCanvas"></canvas>
+          <div class="viewfinder-overlay" id="viewfinderReticle">
+            <div class="reticle-circle"></div>
+            <div class="reticle-hint">ALIGN CHAPATI INSIDE RETICLE</div>
+          </div>
+        </div>
+
+        <div class="camera-controls-bar">
+          <button class="camera-aux-btn" id="flipCameraBtn" title="Switch Camera">🔄</button>
+          <button class="shutter-btn" id="shutterBtn" title="Take Photo"></button>
+          <button class="camera-aux-btn" id="quickUploadBtn" title="Pick File Instead">📁</button>
+        </div>
+      </div>
+
+      <!-- File Upload Dropzone -->
+      <div class="upload-dropzone" id="uploadDropzone" style="display: none;">
+        <input type="file" id="filePicker" accept="image/jpeg,image/png,image/webp" style="display: none;">
+        <div class="upload-icon">📤</div>
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Drop your chapati photo here</h3>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+          Supports JPEG, PNG, or WebP up to 20MB
+        </p>
+        <button class="hero-cta-btn" id="browseFileBtn" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">
+          BROWSE DEVICE FILES
+        </button>
+      </div>
+
+      <!-- Confirmation / Preview Card -->
+      <div class="preview-card" id="previewCard">
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--amber-primary);">
+          SPECIMEN PREVIEW CONFIRMATION
+        </h3>
+        <img src="" alt="Captured Chapati" class="preview-img" id="previewImg">
+        <div class="preview-actions">
+          <button class="btn-retake" id="retakeBtn">🔄 Retake</button>
+          <button class="btn-confirm" id="confirmAnalyzeBtn">🔬 EXECUTE ANALYSIS</button>
+        </div>
+      </div>
+
+      <!-- Laboratory Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay">
+        <div class="lab-spinner"></div>
+        <div class="processing-title">OPTICAL MEASUREMENT IN PROGRESS</div>
+        <div class="processing-step-msg" id="processingStepMsg">Initializing image preprocessing...</div>
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 3: RESULTS ================= -->
+    <section class="screen-view" id="screenResults">
+
+      <!-- Result Header Card -->
+      <div class="result-header-card">
+        <div class="specimen-id-tag" id="resSpecimenId">SPECIMEN ID: CHAPATI-0001</div>
+        <div class="geometric-type-badge" id="resGeometricType">GEOMETRIC TYPE: NEAR CIRCLE</div>
+        <div class="score-display-wrapper">
+          <span class="score-number" id="resScoreVal">87.4</span>
+          <span class="score-denominator"> / 100</span>
+        </div>
+        <h2 class="verdict-title" id="resVerdictTitle">ACCEPTABLE CHAPATI</h2>
+        <p class="verdict-quote" id="resVerdictQuote">"Slightly geographically confused, but operational."</p>
+      </div>
+
+      <!-- Shape Diagnostics Section -->
+      <div class="shape-diagnostics-card" id="shapeDiagnosticsCard">
+        <div class="diagnostics-header">
+          <span class="diagnostics-title">🔬 SHAPE DIAGNOSTICS & MULTI-DESCRIPTOR ROUNDNESS</span>
+          <span class="diagnostics-type-pill" id="diagTypePill">NEAR CIRCLE</span>
+        </div>
+        <div class="diagnostics-grid">
+          <div class="diag-item">
+            <span class="diag-label">Circularity (4πA/P²)</span>
+            <span class="diag-val" id="diagCircularity">98.0%</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Ideal Circle Deviation</span>
+            <span class="diag-val" id="diagCircleDev">91.3% (RMS 1.9%)</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Radius Stability (CV)</span>
+            <span class="diag-val" id="diagStability">95.0%</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Rotational Symmetry (180°)</span>
+            <span class="diag-val" id="diagSymmetry">96.0%</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Ellipse Roundness</span>
+            <span class="diag-val" id="diagEllipse">96.4% (Ratio 1.01)</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Boundary Smoothness</span>
+            <span class="diag-val" id="diagSmoothness">96.6%</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Corner / Vertex Strength</span>
+            <span class="diag-val" id="diagCorner">LOW</span>
+          </div>
+          <div class="diag-item">
+            <span class="diag-label">Solidity (A / A_hull)</span>
+            <span class="diag-val" id="diagSolidity">0.993</span>
+          </div>
+        </div>
+        <div class="gate-cap-notice" id="diagCapNotice" style="display: none;">
+          ⚠️ <strong>Geometric Sanity Gate Applied:</strong> <span id="diagCapReason">Non-circular defect detected. Score capped.</span>
+        </div>
+      </div>
+
+      <!-- Visual Analysis Section -->
+      <div class="visualizer-section">
+        <div class="vis-tabs">
+          <button class="vis-tab-btn active-vis-tab" data-vis="ideal_overlay">Ideal Circle Overlay</button>
+          <button class="vis-tab-btn" data-vis="browning_heatmap">Browning Heatmap</button>
+          <button class="vis-tab-btn" data-vis="radial_profile">Radial Profile r(θ)</button>
+          <button class="vis-tab-btn" data-vis="original">Original Specimen</button>
+          <button class="vis-tab-btn" data-vis="annotated_report">Full Lab Report Card</button>
+        </div>
+
+        <div class="vis-display-area">
+          <img src="" alt="Visualization" class="vis-image" id="activeVisImage">
+        </div>
+        <div class="vis-caption" id="visCaption">
+          Green: Actual boundary | Amber: Ideal fitted circle | Vector: Centroid offset
+        </div>
+      </div>
+
+      <!-- Metric Cards Grid -->
+      <div class="metrics-grid">
+        
+        <!-- Circularity -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Circularity</span>
+            <span class="metric-badge">Weight 30%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardCircularity">91.4%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barCircularity" style="width: 91%;"></div>
+          </div>
+          <div class="metric-desc">Formula: 4πA / P² (Mathematical circle = 1.0)</div>
+        </div>
+
+        <!-- Radius Stability -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Radius Stability</span>
+            <span class="metric-badge">Weight 20%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardStability">86.7%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barStability" style="width: 86%;"></div>
+          </div>
+          <div class="metric-desc">Coefficient of variation CV across 360° radial rays</div>
+        </div>
+
+        <!-- Symmetry -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Rotational Symmetry</span>
+            <span class="metric-badge">Weight 15%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardSymmetry">88.2%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barSymmetry" style="width: 88%;"></div>
+          </div>
+          <div class="metric-desc">Cross-radial comparison r(θ) vs r(θ + 180°)</div>
+        </div>
+
+        <!-- Edge Smoothness -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Edge Smoothness</span>
+            <span class="metric-badge">Weight 15%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardSmoothness">79.3%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barSmoothness" style="width: 79%;"></div>
+          </div>
+          <div class="metric-desc">Residual high-frequency jitter against smoothed shape</div>
+        </div>
+
+        <!-- Center Accuracy -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Center Accuracy</span>
+            <span class="metric-badge">Weight 10%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardCenterAcc">94.1%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barCenterAcc" style="width: 94%;"></div>
+          </div>
+          <div class="metric-desc">Displacement between mass centroid & fitted circle center</div>
+        </div>
+
+        <!-- Browning & Toasting -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Toasting Control</span>
+            <span class="metric-badge">Weight 5%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardBurnControl">76.0%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barBurnControl" style="width: 76%;"></div>
+          </div>
+          <div class="metric-desc" id="cardBurnDesc">Burn Ratio: 4.1% | Pattern: Balanced Browning</div>
+        </div>
+
+        <!-- Texture -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Visual Texture</span>
+            <span class="metric-badge">Weight 5%</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-value" id="cardTexture">82.1%</span>
+          </div>
+          <div class="metric-bar-bg">
+            <div class="metric-bar-fill" id="barTexture" style="width: 82%;"></div>
+          </div>
+          <div class="metric-desc">Visible surface Laplacian & local contrast metrics</div>
+        </div>
+
+        <!-- Geometric Dimensions -->
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-name">Geometric Dimensions</span>
+            <span class="metric-badge">Uncalibrated</span>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+            <div>Area: <span id="cardArea" style="color: var(--text-primary); font-weight: 700;">12,345</span> px²</div>
+            <div>Perimeter: <span id="cardPerimeter" style="color: var(--text-primary); font-weight: 700;">420</span> px</div>
+            <div>Eq. Diameter: <span id="cardDiameter" style="color: var(--text-primary); font-weight: 700;">125.4</span> px</div>
+            <div>Aspect Ratio: <span id="cardAspect" style="color: var(--text-primary); font-weight: 700;">1.03</span></div>
+          </div>
+          <div class="metric-desc" style="margin-top: 0.5rem;">Dimensions reported strictly in pixel coordinates</div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons Bar -->
+      <div class="results-action-bar">
+        <button class="action-btn primary" id="btnDownloadReport">
+          <span>📥</span> Download Lab Report Card
+        </button>
+        <button class="action-btn" id="btnExportJson">
+          <span>📄</span> Export JSON
+        </button>
+        <button class="action-btn" id="btnAnalyzeAnother">
+          <span>🔬</span> Analyze Another Chapati
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ================= SCREEN 4: HISTORY ================= -->
+    <section class="screen-view" id="screenHistory">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: var(--amber-primary);">SPECIMEN REGISTRY</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Historical records of evaluated chapatis</p>
+        </div>
+        <button class="action-btn" id="btnExportCsv" style="min-width: 140px; padding: 0.5rem 1rem;">
+          <span>📊</span> Export CSV
+        </button>
+      </div>
+
+      <div class="history-table-container">
+        <table class="history-table" id="historyTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date & Time</th>
+              <th>Circularity</th>
+              <th>Burn Ratio</th>
+              <th>Score</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="empty-history-box" id="emptyHistoryBox" style="display: none;">
+        <div class="empty-history-icon">📜</div>
+        <h3>No chapatis have been judged yet.</h3>
+        <p style="margin-top: 0.4rem;">Submit your first specimen to start building the registry.</p>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 5: ABOUT ================= -->
+    <section class="screen-view" id="screenAbout">
+      <div class="about-card">
+        <h2>CHAPATI ANALYZER™ LABORATORY DOSSIER</h2>
+        <p>
+          <em>"We took something that should be judged by someone's grandmother and turned it into a computer-vision problem."</em>
+        </p>
+
+        <h3>1. Computer Vision Pipeline</h3>
+        <p>
+          Chapati Analyzer™ operates strictly on classical digital image processing without black-box neural networks. The pipeline performs adaptive color thresholding in HSV and CIE Lab space, followed by Otsu binarization and morphological contour extraction.
+        </p>
+
+        <h3>2. Mathematical Formulations</h3>
+        <ul>
+          <li><strong>Circularity Index:</strong> <span class="formula-chip">Circularity = 4πA / P²</span>, where A is contour area and P is perimeter.</li>
+          <li><strong>Equivalent Diameter:</strong> <span class="formula-chip">D = 2 × √(A / π)</span>.</li>
+          <li><strong>Radial Sampling:</strong> Evaluates 360 angular rays <span class="formula-chip">r(θ)</span> from the centroid to compute the coefficient of variation <span class="formula-chip">CV = σ / μ</span>.</li>
+          <li><strong>Rotational Symmetry:</strong> Cross-evaluates radial symmetry <span class="formula-chip">|r(θ) - r(θ + 180°)|</span>.</li>
+        </ul>
+
+        <h3>3. Browning & Texture Quantification</h3>
+        <p>
+          Toasting patterns are analyzed across 5 concentric radial zones (Center, Inner, Middle, Outer, Edge) by measuring relative lightness drops from dough baseline, computing the burn ratio and patch morphology. Surface texture is extracted using eroded Laplacian variance and local variance.
+        </p>
+
+        <h3>4. Future Stage 2 Architecture</h3>
+        <p>
+          The system stores a normalized 360-bin scale-invariant shape signature for every specimen, designed to support the planned <strong>Chapati Shape Genome™</strong>, hierarchical clustering, and evolutionary lineage trees.
+        </p>
+
+        <div class="disclaimer-box">
+          <strong>SCIENTIFIC & SENSORY DISCLAIMER:</strong>
+          This application measures visible and geometric characteristics extracted from digital pixels. It does NOT scientifically determine culinary taste, physical softness, chewiness, nutritional value, freshness, or food safety.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
