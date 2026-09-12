@@ -1,149 +1,195 @@
-# CHAPATI ANALYZER™
+<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
 
-> **"Because apparently, even a chapati needs a performance review."**  
-> *"We took something that should be judged by someone's grandmother and turned it into a computer-vision problem."*
 
----
 
-## 1. Project Overview & Motivation
+# Chapati Analyzer™ 🎯
 
-**Chapati Analyzer™** is an intentionally over-engineered computer-vision Progressive Web App (PWA) that extracts measurable mathematical and optical properties of a chapati from a photograph or phone camera capture to answer:
+> **Because your chapati deserves a scientific evaluation.**
 
-> **"How mathematically good is this chapati?"**
-
-Instead of human subjectivity or black-box neural hallucinations, this system employs **classical digital image processing, contour calculus, radial signal analysis, and deterministic scoring**.
+A computer vision system that analyzes chapatis using image processing and gives them a completely unnecessary but scientifically questionable **Chapati Perfection Index™**.
 
 ---
 
-## 2. Key Features
+## Basic Details
 
-- 📱 **True Progressive Web App (PWA)**: Installable on Android, iOS, tablet, and desktop with standalone display and offline shell caching.
-- 📷 **First-Class Mobile Camera Support**: Live viewfinder reticle, rear camera priority (`facingMode: "environment"`), camera flip, snapshot confirmation, and drag-and-drop file upload fallback.
-- 📐 **Rigorous Geometry**:
-  - Exact contour area (Green's theorem) & perimeter
-  - Circularity index ($4\pi A / P^2$)
-  - Aspect ratio & equivalent diameter
-  - Taubin/Kåsa algebraic circle fitting ("The circle your chapati was trying to be")
-  - Mass centroid vs. fitted circle center deviation
-- 🔄 **360° Radial & Symmetry Analysis**:
-  - Sampled radial profile $r(\theta)$ for $\theta \in [0^\circ, 360^\circ)$
-  - Radius stability score (coefficient of variation $CV = \sigma / \mu$)
-  - $180^\circ$ and $90^\circ$ rotational symmetry
-  - Edge irregularity & high-frequency smoothness filtering
-- 🔥 **Concentric Browning & Toasting Analysis**:
-  - Maillard reaction patch segmentation
-  - 5 concentric radial zones (Center, Inner, Middle, Outer, Edge)
-  - Burn ratio and humorous pattern classifications (*Balanced Browning, Center Burner, Edge Burner, etc.*)
-- 🔬 **Visible Texture Analysis**:
-  - Surface Laplacian variance and local contrast
-- 🏆 **Chapati Perfection Index™ (0–100)**:
-  - 100% deterministic weighted scoring (zero fake or random numbers)
-  - 6 certified verdict tiers with humorous quotes
-- 💾 **Persistence & Exports**:
-  - SQLite database (`data/chapati.db`) with sequential specimen IDs (`CHAPATI-0001`)
-  - Full analysis JSON export
-  - Registry CSV export
-  - Certified high-resolution laboratory report card download
-- 🧬 **Stage 2 Readiness**:
-  - Internal 360-bin normalized shape vectors preserved for the planned **Chapati Shape Genome™** and evolutionary trees.
+### Team Name: Void
 
----
+### Team Members
 
-## 3. Mathematical Formulas & Pipeline
+- Team Lead: Albert M Paul - Adi Shankara Institute of Engineering and Technology
+- Member 2: Basil Saji - Adi Shankara Institute of Engineering and Technology
 
-### Computer Vision Pipeline
-```text
-INPUT IMAGE
-    ↓
-PREPROCESSING (Resize, Bilateral Filter, HSV & CIE Lab conversions)
-    ↓
-SEGMENTATION (Multi-strategy Otsu, dough color thresholding, candidate scoring)
-    ↓
-GEOMETRIC ANALYSIS (Area, perimeter, circularity, Taubin circle fit)
-    ↓
-RADIAL ANALYSIS (360° ray profile r(θ), stability, 180° symmetry, edge filter)
-    ↓
-BROWNING & TEXTURE (5-zone Maillard quantification, Laplacian variance)
-    ↓
-PERFECTION INDEX (Deterministic weighted synthesis)
-    ↓
-VERDICT & REPORT GENERATION (Visual overlays, database storage, exports)
-```
+### Project Description
 
-### Core Formulations
-- **Circularity**:
-  $$\text{Circularity} = \frac{4\pi A}{P^2}$$
-- **Equivalent Diameter**:
-  $$D = 2\sqrt{\frac{A}{\pi}}$$
-- **Radius Stability**:
-  $$CV = \frac{\sigma_r}{\mu_r}, \quad \text{Stability} = \max(0, 100 \times (1 - 2.5 \times CV))$$
-- **Rotational Symmetry (180°)**:
-  $$\text{Diff}_{180} = \frac{1}{360} \sum_{\theta=0}^{359} \frac{|r(\theta) - r((\theta+180)\bmod 360)|}{\mu_r}$$
-- **Burn Ratio**:
-  $$\text{Burn Ratio} = \frac{\text{Browned Area}}{\text{Chapati Area}}$$
+Chapati Analyzer™ is a computer vision application that examines a chapati image and measures its geometric and visual properties.
 
-### Perfection Index Weights
-| Feature | Weight |
-|---|---:|
-| Circularity | 30% |
-| Radius Stability | 20% |
-| Rotational Symmetry | 15% |
-| Edge Smoothness | 15% |
-| Center Accuracy | 10% |
-| Browning Control | 5% |
-| Visual Texture | 5% |
-| **Total** | **100%** |
+It analyzes circularity, symmetry, edge smoothness, radius stability, size, browning, and texture to determine how close the chapati is to the completely arbitrary definition of "perfect."
 
-### Verdict Hierarchy
-- **95–100**: `GEOMETRICALLY ENLIGHTENED` — *"This chapati has achieved a level of circularity that may concern mathematicians."*
-- **90–95**: `ALMOST CIRCULAR` — *"Grandma would probably approve."*
-- **80–90**: `ACCEPTABLE CHAPATI` — *"Slightly geographically confused, but operational."*
-- **70–80**: `QUESTIONABLE GEOMETRY` — *"The circle was merely a suggestion."*
-- **60–70**: `SHAPE INCIDENT` — *"Something happened here."*
-- **< 60**: `PLEASE CONSULT A CHAPATI ENGINEER` — *"Immediate geometric intervention recommended."*
+### The Problem (that doesn't exist)
+
+For centuries, humanity has been making chapatis without knowing their exact mathematical quality.
+
+But how do we know whether a chapati is truly circular?
+
+What if it is secretly an oval?
+
+What if one side is slightly more geographically developed than the other?
+
+Most importantly:
+
+**Who is going to give the chapati a score?**
+
+There was clearly a serious technological gap that nobody asked us to solve.
+
+### The Solution (that nobody asked for)
+
+We built **Chapati Analyzer™**.
+
+Simply upload a picture of a chapati or capture one using a camera, and our system performs computer vision analysis on it.
+
+The system extracts geometric and visual features and combines them into a **Chapati Perfection Index™**.
+
+Finally, it delivers a brutally honest verdict such as:
+
+- PERFECT CHAPATI
+- ALMOST CIRCULAR
+- ACCEPTABLE CHAPATI
+- GEOGRAPHICALLY CONFUSED
+- THIS IS NOT A CHAPATI
+- PLEASE TRY AGAIN
+
+Because sometimes your cooking needs peer review.
 
 ---
 
-## 4. Technology Stack
+## Technical Details
 
-- **Backend**: Python 3.12, Flask, OpenCV (`opencv-python`), NumPy, SciPy, Matplotlib, Pillow, SQLite3
-- **Frontend**: HTML5, CSS3, ES6 JavaScript Modules (zero framework bloat)
-- **PWA**: Web App Manifest, Service Worker (`sw.js`), Cache API, MediaDevices Camera API
+### Technologies/Components Used
+
+#### For Software:
+
+- **Language:** Python
+- **Framework:** Flask
+- **Computer Vision:** OpenCV
+- **Numerical Processing:** NumPy
+- **Scientific Computing:** SciPy
+- **Image Processing:** Pillow
+- **Visualization:** Matplotlib
+- **Frontend:** HTML, CSS, JavaScript
+- **Web Application:** Progressive Web App (PWA)
+- **Database:** SQLite
+- **Version Control:** Git & GitHub
+
+#### Computer Vision Techniques:
+
+- Image preprocessing
+- Chapati segmentation
+- Contour detection
+- Contour geometry analysis
+- Circularity calculation
+- Radial distance analysis
+- Symmetry analysis
+- Edge smoothness analysis
+- Ellipse fitting
+- Convex hull and solidity analysis
+- Shape deviation analysis
+- Browning analysis
+- Texture analysis
+
+#### For Hardware:
+
+No specialized hardware is required.
+
+The system can work using:
+
+- Laptop/Desktop
+- Smartphone camera
+- Any standard camera capable of capturing a chapati image
 
 ---
 
-## 5. Installation & Running
+## Implementation
 
-### 1. Prerequisites
-Python 3.10+ installed.
+### For Software:
 
-### 2. Install Dependencies
+The application follows a simple pipeline:
+
+1. Capture or upload a chapati image.
+2. Preprocess the image.
+3. Detect and isolate the chapati.
+4. Extract its contour.
+5. Analyze the contour geometry.
+6. Calculate shape and roundness features.
+7. Analyze browning and texture.
+8. Calculate the Chapati Perfection Index™.
+9. Generate a humorous verdict.
+10. Store analysis results for future comparison.
+
+### Shape Analysis
+
+The system evaluates multiple geometric properties instead of relying on a single circularity value.
+
+Important measurements include:
+
+- Circularity
+- Aspect ratio
+- Solidity
+- Radius stability
+- Symmetry
+- Ideal-circle deviation
+- Edge smoothness
+- Ellipse deviation
+- Corner/vertex strength
+- Boundary irregularity
+
+This prevents a suspiciously well-rounded triangle from being incorrectly classified as a perfect circle.
+
+### Browning Analysis
+
+The system examines the visible color distribution of the chapati to estimate browning and burnt regions.
+
+The result is classified into categories such as:
+
+- Minimal Visible Browning
+- Normal Browning
+- Heavy Browning
+- Burnt
+
+### Texture Analysis
+
+The system also analyzes image texture to provide an additional visual measurement of the chapati.
+
+Texture is intentionally given a low influence on the final score because a delicious-looking chapati should not be allowed to escape its geometric responsibilities.
+
+---
+### Project Demo
+# Video
+https://drive.google.com/file/d/1s220V0MQjAyz7SnUEXBCUIGERfg-JYIV/view?usp=drive_link
+
+# Additional Demos
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054250" src="https://github.com/user-attachments/assets/5d4075c4-2109-48ec-b7f3-bd0f8388a509" />
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054306" src="https://github.com/user-attachments/assets/7b8299f2-afa5-4bd5-808f-7f3a5754d176" />
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054321" src="https://github.com/user-attachments/assets/e5281249-4439-4da5-b884-b5a932cd4d40" />
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054339" src="https://github.com/user-attachments/assets/c919910e-2181-46d7-b1c4-f8fc3a8f234f" />
+
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054331" src="https://github.com/user-attachments/assets/2dff84f7-108c-48c6-a294-5c752cebc2fa" />
+
+
+
+
+# Installation
+
+Clone the repository:
+
 ```bash
-pip install -r requirements.txt
-```
+git clone https://github.com/Albert-006/useless-project-.git
+cd useless-project-
 
-### 3. Run the Application
-```bash
-python app.py
-```
-Open your browser at:
-```text
-http://localhost:5000
-```
-*(To test on a mobile phone on the same Wi-Fi, open `http://<YOUR_COMPUTER_IP>:5000`)*
+![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
 
----
 
-## 6. Running Tests
 
-Run the comprehensive unit test suite using synthetic mathematical shapes:
-```bash
-python -m unittest discover -s tests -v
-```
-
----
-
-## 7. Limitations & Scientific Disclaimer
-
-1. **Uncalibrated Dimensions**: Pixel dimensions (area, diameter) are reported in pixels unless a standardized physical calibration marker is used.
-2. **Sensory Disclaimer**: This application analyzes visible optical and geometric features from images. It does **not** determine physical chewiness, softness, internal puffiness, nutritional value, freshness, taste, or food safety.
