@@ -167,16 +167,12 @@ Texture is intentionally given a low influence on the final score because a deli
 https://drive.google.com/file/d/1s220V0MQjAyz7SnUEXBCUIGERfg-JYIV/view?usp=drive_link
 
 # Additional Demos
-<img width="1920" height="1080" alt="Screenshot 2026-09-12 054250" src="https://github.com/user-attachments/assets/5d4075c4-2109-48ec-b7f3-bd0f8388a509" />
-
-<img width="1920" height="1080" alt="Screenshot 2026-09-12 054306" src="https://github.com/user-attachments/assets/7b8299f2-afa5-4bd5-808f-7f3a5754d176" />
-
-<img width="1920" height="1080" alt="Screenshot 2026-09-12 054321" src="https://github.com/user-attachments/assets/e5281249-4439-4da5-b884-b5a932cd4d40" />
-
-<img width="1920" height="1080" alt="Screenshot 2026-09-12 054339" src="https://github.com/user-attachments/assets/c919910e-2181-46d7-b1c4-f8fc3a8f234f" />
-
-<img width="1920" height="1080" alt="Screenshot 2026-09-12 054331" src="https://github.com/user-attachments/assets/2dff84f7-108c-48c6-a294-5c752cebc2fa" />
-
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054250" src="https://github.com/user-attachments/assets/be0fce88-02c2-4c06-8ebc-8087f24440ca" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054306" src="https://github.com/user-attachments/assets/c9053f93-7efd-412e-88b3-29dca572e8e5" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054321" src="https://github.com/user-attachments/assets/75a14763-6c05-453f-a53c-192e91501a46" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054339" src="https://github.com/user-attachments/assets/a7694f45-3500-441f-82dc-93db719c73d9" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054331" src="https://github.com/user-attachments/assets/884fff90-2500-4c45-bf4c-fefd36fd96ff" />
+<img width="1920" height="1080" alt="Screenshot 2026-09-12 054356" src="https://github.com/user-attachments/assets/0e5bb636-957f-4a7a-bddb-97918e870300" />
 
 
 
